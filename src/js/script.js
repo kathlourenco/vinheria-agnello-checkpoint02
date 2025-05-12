@@ -10,20 +10,18 @@ let maisVelhoNome = "";
 
 function cadastrarVinho() {
 
-    nomeVinho = prompt(("Insira o nome de um vinho: ")).trim();
+    nomeVinho = prompt("Insira o nome de um vinho: ").trim();
 
     while (nomeVinho === "") {
         alert("Insira um nome de vinho que seja válido!");
-        nomeVinho = prompt("Insira o nome de um vinho: ");
+        nomeVinho = prompt("Insira o nome de um vinho: ").trim();
     }
 
-    tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ")
-    tipovinho = (tipovinho.trim()).toLowerCase();
+    tipovinho = prompt(("Insira o tipo do vinho: Tinto, Branco ou Rosé: ").trim()).toLowerCase();
 
     while (tipovinho !== "tinto" && tipovinho !== "branco" && tipovinho !== "rosé" && tipovinho !== "rose") {
         alert("Insira um tipo de vinho dentre os informados!");
-        tipovinho = prompt("Insira o tipo do vinho - Tinto, Branco ou Rosé: ");
-        tipovinho = (tipovinho.trim()).toLowerCase();
+        tipovinho = prompt(("Insira o tipo do vinho: Tinto, Branco ou Rosé: ").trim()).toLowerCase();
     }
 
     if (tipovinho === "tinto") {
@@ -41,7 +39,7 @@ function cadastrarVinho() {
 
     dataProducao = parseInt(prompt("Insira o ano de produção do vinho: "));
 
-    while (dataProducao == "" || dataProducao < 0 || dataProducao > 2025 || isNaN(dataProducao)) {
+    while (dataProducao < 0 || dataProducao > 2025 || isNaN(dataProducao)) {
 
         alert("Insira um ano de produção válido!");
         dataProducao = parseInt(prompt("Insira a data de produção do vinho: "));
@@ -50,7 +48,7 @@ function cadastrarVinho() {
 
     estoque = parseInt(prompt("Insira quantos vinhos deseja cadastrar: "));
 
-    while (estoque == "" || estoque <= 0 || isNaN(estoque)) {
+    while (estoque <= 0 || isNaN(estoque)) {
 
         alert("Insira uma quantidade de vinhos válida!");
         estoque = prompt("Insira quantos vinhos deseja levar: ");
@@ -74,7 +72,11 @@ function detalhesVinho(nome, tipo, estoque, producao) {
 
     alert(mensagem);
 
-    console.log(`Detalhes do ${qntVinhos}° vinho: \nNome: ${nome} \nTipo:  ${tipo} \nEstoque:  ${estoque}\nAno:  ${producao}`);
+    console.log(`Detalhes do ${qntVinhos}° vinho:
+    Nome: ${nome}
+    Tipo: ${tipo}
+    Estoque: ${estoque}
+    Ano: ${producao}`);
 
     if (estoque < 5) {
         console.log(`"${nome}" Está com estoque baixo!`);
@@ -95,7 +97,7 @@ function detalhesVinho(nome, tipo, estoque, producao) {
 
 function recadastrarVinho() {
 
-    escolha = prompt(("Deseja cadastrar outro vinho?").toLowerCase());
+    escolha = prompt(("Deseja cadastrar outro vinho?").toLowerCase()).trim();
 
     while (escolha == "sim" || escolha == "s" || escolha == "y" || escolha == "yes") {
 
@@ -107,7 +109,9 @@ function recadastrarVinho() {
 
     }
 
-    console.log(`Quantidade de vinhos cadastrados: ${qntVinhos} \nVinho com a safra mais antiga: ${maisVelhoNome}\nQuantidade de vinhos em baixo estoque: ${contEstoqueBaixo}`)
+    console.log(`Quantidade de vinhos cadastrados: ${qntVinhos}
+    Vinho com a safra mais antiga: ${maisVelhoNome}
+    Quantidade de vinhos em baixo estoque: ${contEstoqueBaixo}`)
 
     alert("Confira o console para ver a quantidade de vinhos cadastrados e outros detalhes")
 
