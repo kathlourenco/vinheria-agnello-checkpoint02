@@ -89,6 +89,9 @@ function detalhesVinho(nome, tipo, estoque, producao) {
     if (producao >= 2020) {
         console.log(`"${nome}" É um vinho jovem!`);
     }
+    if (document.getElementById("vinhos-container")) {
+    adicionarNaTabela(nome, tipo, producao, estoque);
+}
 
 }
 
@@ -117,4 +120,21 @@ function recadastrarVinho() {
 cadastrarVinho();
 detalhesVinho(nomeVinho, tipovinho, estoque, dataProducao);
 recadastrarVinho();
+
+function adicionarNaTabela(nome, tipo, ano, estoque) {
+    const container = document.getElementById("vinhos-container");
+
+    const vinhoCard = document.createElement("div");
+    vinhoCard.classList.add("linha-vinho");
+
+    vinhoCard.innerHTML = `
+        <div class="coluna">${nome}</div>
+        <div class="coluna">${tipo}</div>
+        <div class="coluna">${ano}</div>
+        <div class="coluna">${estoque}</div>
+        <div class="coluna">${ano < 2015 ? "Antigo" : ano <= 2019 ? "Maduro" : "Jovem"}</div>
+    `;
+
+    container.appendChild(vinhoCard);
+}
 
