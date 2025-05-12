@@ -23,6 +23,7 @@ function cadastrarVinho() {
         tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ");
         tipovinho = tipovinho.trim();
     }
+
     if (tipovinho.toLowerCase() === "tinto") {
         tipovinho = "Tinto";
 
@@ -40,7 +41,7 @@ function cadastrarVinho() {
     dataproducao = prompt("Insira a data de produção do vinho: ").trim();
     dataproducao = dataproducao.trim();
 
-    if (dataproducao === "" || parseInt(dataproducao) < 1000 || parseInt(dataproducao) > 2026) {
+    while (dataproducao === "" || parseInt(dataproducao) < 1000 || parseInt(dataproducao) > 2026) {
 
         alert("Insira uma data de produção válida!");
         dataproducao = parseInt(prompt("Insira a data de produção do vinho: "));
@@ -106,7 +107,7 @@ function recadastrarVinho() {
 
     escolha = prompt("Deseja cadastrar outro vinho?");
 
-    while (escolha == "sim" || escolha == "Sim" || escolha == "SIM") {
+    while (escolha.toLowerCase() == "sim" || escolha.toLowerCase() == "s" || escolha.toLowerCase() == "y") {
 
         qntVinhos += 1;
         cadastrarVinho();
