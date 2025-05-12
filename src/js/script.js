@@ -4,21 +4,19 @@ let dataproducao = "";
 let estoque = "";
 let escolha = ""
 var qntVinhos = 1;
-var contEstoqueBaixo = 0;
 
 function cadastrarVinho() {
 
     nomevinho = prompt("Insira o nome de um vinho: ");
 
-    if (nomevinho.trim() === "") {
+    while (nomevinho.trim() === "") {
         alert("Insira o nome de um vinho da nossa loja!");
         nomevinho = prompt("Insira o nome de um vinho: ");
     }
 
-    tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ");
-    tipovinho = tipovinho.trim();
+    tipovinho = tipovinho.trim(prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: "));
 
-    if (tipovinho !== "tinto" && tipovinho !== "Tinto" && tipovinho !== "branco" && tipovinho !== "Branco" && tipovinho !== "rosé" && tipovinho !== "rose" && tipovinho !== "Rose" && tipovinho !== "Rosé") {
+    while (tipovinho !== "tinto" && tipovinho !== "Tinto" && tipovinho !== "branco" && tipovinho !== "Branco" && tipovinho !== "rosé" && tipovinho !== "rose" && tipovinho !== "Rose" && tipovinho !== "Rosé") {
         alert("Insira um tipo de vinho da nossa loja!");
         tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ");
         tipovinho = tipovinho.trim();
@@ -41,7 +39,7 @@ function cadastrarVinho() {
     dataproducao = prompt("Insira a data de produção do vinho: ").trim();
     dataproducao = dataproducao.trim();
 
-    while (dataproducao === "" || parseInt(dataproducao) < 1000 || parseInt(dataproducao) > 2026) {
+    while (dataproducao === "" || parseInt(dataproducao) < 0 || parseInt(dataproducao) > 2026) {
 
         alert("Insira uma data de produção válida!");
         dataproducao = parseInt(prompt("Insira a data de produção do vinho: "));
@@ -51,19 +49,12 @@ function cadastrarVinho() {
 
     estoque = prompt("Insira quantos vinhos deseja cadastrar: ");
 
-    if (estoque.trim() === "" || parseInt(estoque) <= 0) {
+    while (estoque.trim() === "" || parseInt(estoque) <= 0) {
 
-        alert("Insira uma quantidade de vinhos válida no estoque!");
+        alert("Insira uma quantidade de vinhos válida!");
         estoque = prompt("Insira quantos vinhos deseja levar: ");
     }
 
-    if (estoque.trim() === "" || parseInt(estoque) <= 0) {
-
-        alert("Valor inválido! Por favor, insira uma quantidade maior que 0.");
-        estoque = prompt("Insira quantos vinhos deseja levar: ");
-    }
-
-    estoque = parseInt(estoque);
     alert("A quantidade de vinhos é: " + estoque);
 }
 cadastrarVinho();
@@ -78,25 +69,20 @@ function detalhesVinho(nome, tipo, estoque, producao) {
 
     alert(mensagem);
     alert("Veja os detalhes do cadastro no console!");
-    console.log("Detalhes da sua escolha: ");
-    console.log(`Nome: ${nome}`);
-    console.log(`Tipo:  ${tipo}`);
-    console.log(`Estoque:  ${estoque}`);
-    console.log(`Ano:  ${producao}`);
+    console.log(`Detalhes do ${qntVinhos}° vinho: \nNome: ${nome} \nTipo:  ${tipo} \nEstoque:  ${estoque}\nAno:  ${producao}`);
 
 
     if (estoque < 5) {
-        console.log("Classificação do estoque do vinho : " + "  " + "Estoque baixo!");
-        contEstoqueBaixo += 1;
+        console.log(`Classificação do estoque do vinho :${nome} \nEstoque baixo!`);
     }
     if (producao < 2015) {
-        console.log("Classificação da safra do vinho : " + "  " + "  Vinho Antigo!");
+        console.log(`Classificação da safra do vinho :${nome} \nVinho Antigo!`);
     }
     if (producao >= 2015 && producao <= 2019) {
-        console.log("Classificação da safra do vinho : " + "  " + "  Vinho Amadurecido!");
+        console.log(`Classificação da safra do vinho :${nome} \nVinho Amadurecido!`);
     }
     if (producao >= 2020) {
-        console.log("Classificação da safra do vinho : " + "  " + "  Vinho jovem!");
+        console.log(`Classificação da safra do vinho :${nome} \nVinho jovem!`);
     }
 
 }
@@ -118,8 +104,7 @@ function recadastrarVinho() {
     }
 
     console.log(`Tipos de vinho cadastrados: ${qntVinhos}`)
-    console.log(`Vinhos com baixo estoque: ${contEstoqueBaixo}`)
-    alert("Confira o console para ver a quantidade de vinhos cadastrados e quantos estão com estoque baixo")
+    alert("Confira o console para ver a quantidade de vinhos cadastrados")
 
 }
 recadastrarVinho();
