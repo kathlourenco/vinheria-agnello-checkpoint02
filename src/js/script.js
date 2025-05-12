@@ -13,14 +13,14 @@ function cadastrarVinho() {
     nomeVinho = prompt("Insira o nome de um vinho: ");
 
     while (nomeVinho.trim() === "") {
-        alert("Insira o nome de um vinho da nossa loja!");
+        alert("Insira um nome de vinho válido!");
         nomeVinho = prompt("Insira o nome de um vinho: ");
     }
 
     tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ")
     tipovinho = tipovinho.trim();
 
-    while (tipovinho !== "tinto" && tipovinho !== "Tinto" && tipovinho !== "branco" && tipovinho !== "Branco" && tipovinho !== "rosé" && tipovinho !== "rose" && tipovinho !== "Rose" && tipovinho !== "Rosé") {
+    while (tipovinho.toLowerCase() !== "tinto" && tipovinho.toLowerCase() !== "branco" && tipovinho.toLowerCase() !== "rosé" && tipovinho.toLowerCase() !== "rose") {
         alert("Insira um tipo de vinho da nossa loja!");
         tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ");
         tipovinho = tipovinho.trim();
