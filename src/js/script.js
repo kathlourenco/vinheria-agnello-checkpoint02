@@ -10,40 +10,40 @@ let maisVelhoNome = "";
 
 function cadastrarVinho() {
 
-    nomeVinho = prompt("Insira o nome de um vinho: ");
+    nomeVinho = prompt(("Insira o nome de um vinho: ")).trim();
 
-    while (nomeVinho.trim() === "") {
-        alert("Insira um nome de vinho válido!");
+    while (nomeVinho === "") {
+        alert("Insira um nome de vinho que seja válido!");
         nomeVinho = prompt("Insira o nome de um vinho: ");
     }
 
     tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ")
-    tipovinho = tipovinho.trim();
+    tipovinho = (tipovinho.trim()).toLowerCase();
 
-    while (tipovinho.toLowerCase() !== "tinto" && tipovinho.toLowerCase() !== "branco" && tipovinho.toLowerCase() !== "rosé" && tipovinho.toLowerCase() !== "rose") {
-        alert("Insira um tipo de vinho da nossa loja!");
-        tipovinho = prompt("Insira o tipo do vinho: Tinto, Branco ou Rosé: ");
-        tipovinho = tipovinho.trim();
+    while (tipovinho !== "tinto" && tipovinho !== "branco" && tipovinho !== "rosé" && tipovinho !== "rose") {
+        alert("Insira um tipo de vinho dentre os informados!");
+        tipovinho = prompt("Insira o tipo do vinho - Tinto, Branco ou Rosé: ");
+        tipovinho = (tipovinho.trim()).toLowerCase();
     }
 
-    if (tipovinho.toLowerCase() === "tinto") {
+    if (tipovinho === "tinto") {
         tipovinho = "Tinto";
 
     } 
-    else if (tipovinho.toLowerCase() === "branco") {
+    else if (tipovinho === "branco") {
         tipovinho = "Branco";
 
     } 
-    else if (tipovinho.toLowerCase() === "rosé" || tipovinho.toLowerCase() === "rose") {
+    else if (tipovinho === "rosé" || tipovinho === "rose") {
         tipovinho = "Rosé";
 
     }
 
-    dataProducao = parseInt(prompt("Insira a data de produção do vinho: "));
+    dataProducao = parseInt(prompt("Insira o ano de produção do vinho: "));
 
-    while (dataProducao == "" || dataProducao < 0 || dataProducao > 2026 || isNaN(dataProducao)) {
+    while (dataProducao == "" || dataProducao < 0 || dataProducao > 2025 || isNaN(dataProducao)) {
 
-        alert("Insira uma data de produção válida!");
+        alert("Insira um ano de produção válido!");
         dataProducao = parseInt(prompt("Insira a data de produção do vinho: "));
     }
 
@@ -95,9 +95,9 @@ function detalhesVinho(nome, tipo, estoque, producao) {
 
 function recadastrarVinho() {
 
-    escolha = prompt("Deseja cadastrar outro vinho?");
+    escolha = prompt(("Deseja cadastrar outro vinho?").toLowerCase());
 
-    while (escolha.toLowerCase() == "sim" || escolha.toLowerCase() == "s" || escolha.toLowerCase() == "y") {
+    while (escolha == "sim" || escolha == "s" || escolha == "y" || escolha == "yes") {
 
         qntVinhos += 1;
         cadastrarVinho();
@@ -107,7 +107,7 @@ function recadastrarVinho() {
 
     }
 
-    console.log(`Vinhos cadastrados: ${qntVinhos} \nVinho com a safra mais antiga: ${maisVelhoNome}\nQuantidade de vinhos em baixo estoque: ${contEstoqueBaixo}`)
+    console.log(`Quantidade de vinhos cadastrados: ${qntVinhos} \nVinho com a safra mais antiga: ${maisVelhoNome}\nQuantidade de vinhos em baixo estoque: ${contEstoqueBaixo}`)
 
     alert("Confira o console para ver a quantidade de vinhos cadastrados e outros detalhes")
 
