@@ -2,6 +2,7 @@ let nomevinho = "";
 let tipovinho = "";
 let dataproducao = "";
 let estoque = ""; 
+var contVinhos = 1;
 
 function cadastrarVinho() {  
    
@@ -96,3 +97,22 @@ document.getElementById("nome").innerText = nomevinho;
 document.getElementById("tipo").innerText = tipovinho;
 document.getElementById("ano").innerText = dataproducao;
 document.getElementById("quant").innerText = estoque;    
+
+
+function recadastrarVinho() {
+
+    escolha = prompt("Deseja cadastrar outro vinho? (Sim/Não)");
+
+    while (escolha == "sim" && escolha == "Sim" && escolha == "SIM") {
+
+        contVinhos += 1;
+        cadastrarVinho();
+        detalhesVinho(nomevinho, tipovinho, estoque, dataproducao);
+
+        console.log(`A quantidade cadastrada de vinhos foi ${contVinhos}`)
+        alert("Confira o console para ver a quantidade de vinhos cadastrados")
+
+    }
+}
+recadastrarVinho();
+
