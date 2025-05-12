@@ -13,7 +13,7 @@ Sistematização para cadastro e análise de vinhos nacionais e importados da Vi
   
 - Kauã Gabriel
 
-# GitHube Pages
+# GitHub Pages
 
 Visite o projeto pelo site!
 
